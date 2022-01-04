@@ -3,8 +3,14 @@ package com.revature.models;
 import java.util.List;
 import java.util.Scanner;
 
-import com.revature.services.EmployeeService;
-import com.revature.services.RoleService;
+
+import com.revature.repositories.ReimbursementDAO;
+import com.revature.repositories.UserDAO;
+import com.revature.services.ReimbursementServiceTest;
+import com.revature.services.AuthServiceTest;
+import com.revature.services.UserServiceTest;
+
+
 
 public class Menu {
 	EmployeeService es = new EmployeeService(); //we need this object to use methods from EmployeeService
@@ -18,7 +24,7 @@ public class Menu {
 		
 		//give the user a pretty greeting :)
 		System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
-		System.out.println("Welcome to The Krusty Krab Employee Management System");
+		System.out.println("Welcome to the Employee Reimbursement System!");
 		System.out.println("*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*");
 		
 		
