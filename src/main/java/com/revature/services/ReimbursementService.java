@@ -1,11 +1,19 @@
 package com.revature.services;
 
+
+
 import com.revature.models.Reimbursement;
+
 import com.revature.models.Status;
 import com.revature.models.User;
 
 import java.util.Collections;
 import java.util.List;
+
+import com.revature.repositories.ReimbursementDAO;
+
+
+
 
 /**
  * The ReimbursementService should handle the submission, processing,
@@ -25,7 +33,25 @@ import java.util.List;
  * </ul>
  */
 public class ReimbursementService {
-
+	
+	ReimbursementDAO rDAO = new ReimbursementDAO(); //so that I can use the methods from the EmployeeDAO
+	
+	public List<Reimbursement> getReimbursements() {
+		
+		//get the List of Employees by calling the DAO method that selects them from the database
+		List<Reimbursement> reimbursements = rDAO.getReimbursements();
+		
+		//return the list of employees
+		return reimbursements;
+	}
+	
+	public void insertReimbursement(Reimbursement newReimbursement) {
+		
+		//take in the Employee object sent from the menu and send it to the EmployeeDAO to be inserted into the database
+		
+		//call the DAO method that inserts the new Employee
+		rDAO.insertReimbursement(newReimbursement);
+	}
     /**
      * <ul>
      *     <li>Should ensure that the user is logged in as a Finance Manager</li>

@@ -1,5 +1,12 @@
 package com.revature.services;
 
+
+
+//Need to figure out which classes to import. Which DAO to call... pretty sure the UserDAO
+
+
+
+import com.revature.repositories.UserDAO;
 import com.revature.models.User;
 
 import java.util.Optional;
@@ -27,9 +34,9 @@ public class AuthService {
      *     <li>Must return user object if the user logs in successfully.</li>
      * </ul>
      */
-    public User login(String username, String password) {
+    public String login(String username, String password) {
         return null;
-    }
+    } 
 
     /**
      * <ul>

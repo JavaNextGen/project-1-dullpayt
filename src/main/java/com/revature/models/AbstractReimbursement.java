@@ -22,16 +22,16 @@ import java.util.Objects;
 public class AbstractReimbursement {
 
     private int id;
-    private Status status;
-    private User author;
-    private User resolver;
-    private double amount;
+    private int status;
+    private int author;
+    private int resolver;
+    private int amount;
 
     public AbstractReimbursement() {
         super();
     }
 
-    public AbstractReimbursement(int id, Status status, User author, User resolver, double amount) {
+    public AbstractReimbursement(int id, int status, int author, int resolver, int amount) {//int, status, user, user, double
         super();
         this.id = id;
         this.status = status;
@@ -39,48 +39,51 @@ public class AbstractReimbursement {
         this.resolver = resolver;
         this.amount = amount;
     }
+    
+    
+   
 
     public int getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public Status getStatus() {
-        return status;
-    }
+	public int getStatus() {
+		return status;
+	}
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
-    public User getAuthor() {
-        return author;
-    }
+	public int getAuthor() {
+		return author;
+	}
 
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+	public void setAuthor(int author) {
+		this.author = author;
+	}
 
-    public User getResolver() {
-        return resolver;
-    }
+	public int getResolver() {
+		return resolver;
+	}
 
-    public void setResolver(User resolver) {
-        this.resolver = resolver;
-    }
+	public void setResolver(int resolver) {
+		this.resolver = resolver;
+	}
 
-    public double getAmount() {
-        return amount;
-    }
+	public int getAmount() {
+		return amount;
+	}
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 
-    @Override
+	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

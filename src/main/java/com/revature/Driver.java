@@ -1,18 +1,32 @@
 package com.revature;
 
 import java.sql.Connection; 
+
+
 import java.sql.SQLException;
 
 import com.revature.models.Employee;
 import com.revature.models.FinanceManager;
+//import com.revature.models.Menu;
 import com.revature.util.ConnectionFactory;
 import com.revature.models.Reimbursement;
+import com.revature.controllers.AuthController;
+
+import com.revature.controllers.UserController;
+import com.revature.controllers.ReimbursementController;
+
+import io.javalin.Javalin;
+
 
 
 
 public class Driver {
 
     public static void main(String[] args) {
+    	
+    	UserController uc = new UserController();
+    	AuthController ac = new AuthController();
+    	ReimbursementController rc = new ReimbursementController();
     	
     	//Testing Database Connectivity - just testing whether our Connection (from ConnectionFactory) is successful
 		try(Connection conn = ConnectionFactory.getConnection()){
@@ -22,22 +36,21 @@ public class Driver {
 			e.printStackTrace();
 		}
 		
-		//Here is the actual functionality of our application-------------------
-		
-		//spoiler alert... there will only be two lines of codes here
-		//
-		
-		//Instantiate a menu object
-		Employee menu = new Employee();
-		
-		//Use the Menu Class's displayMenu() method to give the user the menu
-		menu.displayMenu();
-		
-		
-		//this is our entire main method (until we learn Javalin in week 4)
-		
-		//all of the complicated menu logic is hidden in the Menu class... this is power of abstraction!!!!!
-		
+		Javalin app = Javalin.create(
+				config -> {
+					config.enableCorsForAllOrigins(); // allows the server to process JS requests from anywhere
+				}
+			).start(3000);
+	
+	app.get("/user", uc.getUserHandler);
+	app.post("/user", uc.insertUserHandler);
+	
+	//app.get("/authorization", ac.getAuthHandler);
+	//app.post("/login", ac.loginHandler);
+	
+	app.get("/reimbursement", rc.getReimbursementsHandler);
+	app.post("/reimbursement", rc.insertReimbursementHandler);
+	
 	}
     	
 }
