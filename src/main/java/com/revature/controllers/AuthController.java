@@ -2,17 +2,20 @@ package com.revature.controllers;
 
 import com.google.gson.Gson;
 
+
+import java.util.List;
+import com.revature.services.UserService;
 import com.revature.models.ERSLoginDTO;
 import com.revature.services.AuthService;
 
 import io.javalin.http.Handler;
 
-//LINE 29 --- cannot convert String to boolean operation
+//LINE 29 --- cannot convert String to boolean operation???
 
 
 public class AuthController {
 
-AuthService as = new AuthService();
+	AuthService as = new AuthService();
 	
 	public Handler loginHandler = (ctx) -> {
 		
@@ -46,4 +49,6 @@ AuthService as = new AuthService();
 		
 		
 	};
+	
+	
 }

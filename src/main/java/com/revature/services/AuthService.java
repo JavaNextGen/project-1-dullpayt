@@ -7,6 +7,7 @@ package com.revature.services;
 
 
 import com.revature.repositories.UserDAO;
+
 import com.revature.models.User;
 
 import java.util.Optional;
@@ -24,7 +25,10 @@ import java.util.Optional;
  * </ul>
  */
 public class AuthService {
-
+	
+	
+	
+	
     /**
      * <ul>
      *     <li>Needs to check for existing users with username/email provided.</li>
@@ -34,8 +38,8 @@ public class AuthService {
      *     <li>Must return user object if the user logs in successfully.</li>
      * </ul>
      */
-    public String login(String username, String password) {
-        return null;
+    public boolean login(String username, String password) {
+        return true;
     } 
 
     /**

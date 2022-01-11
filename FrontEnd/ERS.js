@@ -3,7 +3,9 @@ const url = "http://localhost:3000/"
 //add eventListeners to our buttons to give them functionality
 document.getElementById("getUserButton").addEventListener("click", getEmployees);
 //login button listener goes here
+document.getElementById("loginButton").addEventListener("click", loginFunction);
 
+async function loginFunction();
 
 //remember, async returns a promise (which fetch requests return)
 async function getEmployees() {

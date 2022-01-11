@@ -22,16 +22,45 @@ import java.util.Objects;
 public class AbstractReimbursement {
 
     private int id;
-    private int status;
-    private int author;
-    private int resolver;
-    private int amount;
+    private Status status;
+    private User author;
+    private	User resolver;
+    private double amount;
+    
+    
+    private int newAuthor;
+    private int newStatus;
+    private int newid;
 
-    public AbstractReimbursement() {
-        super();
-    }
 
-    public AbstractReimbursement(int id, int status, int author, int resolver, int amount) {//int, status, user, user, double
+
+   public int getNewAuthor() {
+		return newAuthor;
+	}
+
+	public void setNewAuthor(int newAuthor) {
+		this.newAuthor = newAuthor;
+	}
+
+	public int getNewStatus() {
+		return newStatus;
+	}
+
+	public void setNewStatus(int newStatus) {
+		this.newStatus = newStatus;
+	}
+
+	public int getNewid() {
+		return newid;
+	}
+
+	public void setNewid(int newid) {
+		this.newid = newid;
+	}
+
+    
+
+    public AbstractReimbursement(int id, Status status, User author, User resolver, double amount) {//int, status, user, user, double
         super();
         this.id = id;
         this.status = status;
@@ -40,9 +69,64 @@ public class AbstractReimbursement {
         this.amount = amount;
     }
     
+    public AbstractReimbursement(int id, int status, int author, int resolver, double amount) {
+        
+    }
     
+    public AbstractReimbursement(int id, int amount, int newAuthor) {
+    	this.id = id;
+    	this.amount=amount;
+    	this.newAuthor = newAuthor;
    
-
+    }
+    
+    public AbstractReimbursement( double amount,  int newauthor , int newid, int newStatus) {
+    	super();
+    this.newid = newid;
+    this.newStatus = newStatus;
+    this.newAuthor = newauthor;
+    this.amount = amount;
+    }
+   
+    public AbstractReimbursement(int id, User newAuthor, double amount) {
+    	
+    }
+    
+    public int getnewStatus() {
+    	return newStatus;
+    }
+    	
+    public void setnewStatus(int newStatus) {
+    	this.newStatus = newStatus;
+    }
+    
+    public int getnewAuthor() {
+    	return newAuthor;
+    }
+    
+    public void setnewAuthor(int newAuthor) {
+    	this.newAuthor = newAuthor;
+    }
+    
+    public AbstractReimbursement(int id, String status) {
+    	
+    }
+    
+    public AbstractReimbursement(int int1) {
+    	
+    }
+    
+    
+    public AbstractReimbursement() {
+    	
+    }
+    
+    
+    
+    
+    
+    
+    
     public int getId() {
 		return id;
 	}
@@ -51,35 +135,35 @@ public class AbstractReimbursement {
 		this.id = id;
 	}
 
-	public int getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
-	public int getAuthor() {
+	public User getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(int author) {
+	public void setAuthor(User author) {
 		this.author = author;
 	}
 
-	public int getResolver() {
+	public User getResolver() {
 		return resolver;
 	}
 
-	public void setResolver(int resolver) {
+	public void setResolver(User resolver) {
 		this.resolver = resolver;
 	}
 
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 

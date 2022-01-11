@@ -6,6 +6,7 @@ import com.revature.models.Reimbursement;
 import com.revature.util.ConnectionFactory;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -48,8 +49,18 @@ public class ReimbursementDAO {
 						rs.getInt("reimb_author"),
 						rs.getInt("reimb_resolver"),
 						rs.getInt("reimb_amount"),
-						rs.getInt("reimb_status_id")
+						rs.getInt("reimb_status_id"),
+						rs.getString("reimb_description"),
+						rs.getByte("reimb_receipt")
 						);
+				
+			     //this.reimb_author = reimb_author;
+			        //this.reimb_resolver = reimb_resolver;
+			        //this.reimb_amount = reimb_amount;
+			        //this.reimb_status = reimb_status;
+			        //this.reimb_type = reimb_type;
+			        //this.reimb_description = reimb_description;
+			        //this.reimb_receipt = reimb_receipt;
 				
 				//and populate the ArrayList with each new Employee object
 				reimbursementList.add(r); //e is the new Employee object we created above
@@ -74,9 +85,39 @@ public class ReimbursementDAO {
 		
 	}
 	
-	public void insertReimbursement(Reimbursement r){
-		
-	}
+		public void insertReimbursement(Reimbursement newReimbursement) { //This is INSERT functionality 
+        
+        try(Connection conn = ConnectionFactory.getConnection()){
+            
+            //we'll create a SQL statement using parameters to insert a new Reimbursement
+            String sql = "INSERT INTO ers_reimbursement (reimb_amount, reimb_description, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id) " //creating a line break for readability
+                        + "VALUES (?, ?, ?, ?, ?, ?); "; //these are parameters!! We have to specify the value of each "?"
+            
+            PreparedStatement ps = conn.prepareStatement(sql); //we use PreparedStatements for SQL commands with variables
+            
+            //use the PreparedStatement objects' methods to insert values into the query's ?s
+            //the values will come from the Employee object we send in.
+            ps.setInt(1, newReimbursement.getReimb_amount()); //1 is the first ?, 2 is the second, etc.
+            ps.setString(2, newReimbursement.getReimb_description());
+            ps.setInt(3, newReimbursement.getReimb_author());
+            ps.setInt(4, newReimbursement.getReimb_resolver());
+            ps.setInt(5, newReimbursement.getReimb_status());
+            ps.setInt(6, newReimbursement.getReimb_type());
+            
+            //this executeUpdate() method actually sends and executes the SQL command we built
+            ps.executeUpdate(); //we use executeUpdate() for inserts, updates, and deletes. 
+            //we use executeQuery() for selects
+            
+            //send confirmation to the console if successful.
+            System.out.println("Reimbursement " + " created.");
+            
+            
+        } catch(SQLException e) {
+            System.out.println("Add Reimbursement failed! :(");
+            e.printStackTrace();
+        }
+        
+    }
     /**
      * Should retrieve a Reimbursement from the DB with the corresponding id or an empty optional if there is no match.
      */

@@ -3,10 +3,11 @@ package com.revature;
 import java.sql.Connection; 
 
 
+
+
 import java.sql.SQLException;
 
-import com.revature.models.Employee;
-import com.revature.models.FinanceManager;
+
 //import com.revature.models.Menu;
 import com.revature.util.ConnectionFactory;
 import com.revature.models.Reimbursement;
@@ -42,11 +43,10 @@ public class Driver {
 				}
 			).start(3000);
 	
-	app.get("/user", uc.getUserHandler);
-	app.post("/user", uc.insertUserHandler);
+	//app.get("/user", uc.getUserHandler);
+	//app.post("/user", uc.insertUserHandler);
 	
-	//app.get("/authorization", ac.getAuthHandler);
-	//app.post("/login", ac.loginHandler);
+	//app.get("/login", ac.loginHandler);
 	
 	app.get("/reimbursement", rc.getReimbursementsHandler);
 	app.post("/reimbursement", rc.insertReimbursementHandler);

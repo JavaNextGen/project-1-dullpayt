@@ -31,4 +31,10 @@ public class ERSLoginDTO {
 		this.password = password;
 	}
 	
+	@Override
+	public String toString() {
+		return "ERSLoginDTO [username= " + username + " password= " + password + "]"; 
+	}
+	
+	
 }

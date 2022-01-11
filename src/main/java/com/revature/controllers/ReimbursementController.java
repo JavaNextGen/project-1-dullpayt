@@ -3,11 +3,16 @@ package com.revature.controllers;
 import java.util.List;
 
 
+
+
 import com.google.gson.Gson;
-import com.revature.models.Employee;
+import com.revature.models.User;
+import com.revature.models.AbstractReimbursement;
 import com.revature.models.Reimbursement;
 
 import com.revature.services.ReimbursementService;
+import com.revature.services.UserService;
+
 
 import io.javalin.http.Handler;
 
@@ -18,18 +23,18 @@ public class ReimbursementController {
 	
 	
 	public Handler getReimbursementsHandler = (ctx) -> {
-		if(ctx.req.getSession(false) != null) { //if the session exist
+		if(ctx.req.getSession() != null) { //if the session exist
 			
-			List<Reimbursement> allReimbursements = rs.getReimbursements();
+			List<Reimbursement> allReimbursements = rs.getReimbursements(); //MAYBE ABSTRACT REIMBURSEMENTS???--------
 			
 			// Add the dependency into your pom.xml so it can import the Gson library
 			Gson gson = new Gson();
 			
 			// Use gson library to convert the java object to a JSON string
-			String JSONReimbursements = gson.toJson(allReimbursements);
+			String JSONAbstractReimbursements = gson.toJson(allReimbursements);
 			
 			// Give a response body with a JSON string 
-			ctx.result(JSONReimbursements);
+			ctx.result(JSONAbstractReimbursements);
 			ctx.status(201);
 			
 
@@ -41,7 +46,7 @@ public class ReimbursementController {
 	
 	public Handler insertReimbursementHandler = (ctx) -> {
 		
-		if(ctx.req.getSession(false) != null) {
+		if(ctx.req.getSession() != null) {
 			String body = ctx.body();
 			
 			Gson gson = new Gson();
@@ -62,7 +67,9 @@ public class ReimbursementController {
 		
 	};
 	
-		
+		///Another handler using managers(roles) to select reimbursements by status/id
+	
+	
 
 	
 

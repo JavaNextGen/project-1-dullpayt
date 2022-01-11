@@ -1,7 +1,13 @@
 package com.revature.services;
 
-import java.util.Optional;
+import java.util.List;
 
+
+import java.util.Optional;
+import com.revature.controllers.UserController;
+import com.revature.repositories.UserDAO;
+import com.revature.models.AbstractUser;
+import com.revature.models.Reimbursement;
 import com.revature.models.User;
 
 /**
@@ -21,10 +27,38 @@ import com.revature.models.User;
  */
 public class UserService {
 
-	/**
-	 *     Should retrieve a User with the corresponding username or an empty optional if there is no match.
-     */
-	public Optional<User> getByUsername(String username) {
-		return Optional.empty();
-	}
-}
+//	UserDAO uDAO = new UserDAO();
+//	
+//	
+//		//getting a user with a corresponding username. Return option if no username exists.
+//		public Optional<User> getWithUsername(String username) {
+//			return Optional.empty();
+//		}
+//
+//		public void getUserRegistration() {
+//			uDAO.getNewUsers();
+//		}
+//		
+//		
+//		public List <User> getNewUsers() {
+//			
+//			List<User> users = uDAO.getNewUsers();
+//			
+//			return users;	
+//			
+//		}
+//		
+//		
+//		
+//		
+//		
+//		
+		
+		
+		
+		
+		
+		
+		
+		
+}		
