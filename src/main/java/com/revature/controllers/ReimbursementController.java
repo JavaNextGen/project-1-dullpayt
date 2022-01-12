@@ -31,10 +31,10 @@ public class ReimbursementController {
 			Gson gson = new Gson();
 			
 			// Use gson library to convert the java object to a JSON string
-			String JSONAbstractReimbursements = gson.toJson(allReimbursements);
+			String JSONReimbursements = gson.toJson(allReimbursements);
 			
 			// Give a response body with a JSON string 
-			ctx.result(JSONAbstractReimbursements);
+			ctx.result(JSONReimbursements);
 			ctx.status(201);
 			
 
@@ -66,11 +66,50 @@ public class ReimbursementController {
 		
 		
 	};
-	
-		///Another handler using managers(roles) to select reimbursements by status/id
-	
-	
 
-	
 
+	public Handler putReimbursementsHandler = (ctx) -> {
+		
+		if(ctx.req.getSession() != null) {
+			
+			String body = ctx.body();
+			
+			Gson gson = new Gson();
+			
+			Reimbursement reimbursement = gson.fromJson(body, Reimbursement.class);
+			
+			rs.updateReimbursement(reimbursement);
+			
+			
+			ctx.result("Reimbursement was successfully updated!");
+			ctx.status(201);
+			
+		} else {
+			ctx.result("Oh no you failed to update an reimbursement!!!");
+			ctx.status(406);
+		}
+		 
+			
+	};
+	
+	public Handler getReimbursementsByAuthorHandler = ctx -> {
+		if(ctx.req.getSession(true) !=null) {
+			try {
+				int id = Integer.parseInt(ctx.pathParam("id"));
+				List<Reimbursement> Reimbursement = rs.getReimbursementsByAuthor(id);
+				Gson gson = new Gson();
+				String JSONReimbursements = gson.toJson(Reimbursement);
+				ctx.result(JSONReimbursements);
+				ctx.status(200);
+			}
+			catch(Exception e) {
+				ctx.result("There was an error while fetching Reimbursements by Role");
+				ctx.status(404);
+			}
+			
+		} else {	
+				ctx.result("Unauthorized User");
+				ctx.status(403);	
+		}
+	};	
 }

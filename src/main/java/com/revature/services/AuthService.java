@@ -2,6 +2,8 @@ package com.revature.services;
 
 
 
+import com.revature.repositories.AuthorizationDAO;
+
 //Need to figure out which classes to import. Which DAO to call... pretty sure the UserDAO
 
 
@@ -25,7 +27,39 @@ import java.util.Optional;
  * </ul>
  */
 public class AuthService {
+	AuthorizationDAO aDAO = new AuthorizationDAO();
+public int login(String username, String password) {
+	try {
 	
+	User user = aDAO.getUser(username,password);
+	String checkUsername = user.getErs_username();
+	
+	String checkPassword = user.getErs_password();
+	int role = user.getUser_role_id();
+	
+	if(username.equals(checkUsername) && password.equals(checkPassword) && role == 1) {
+		return 1;
+	} else if (username.equals(checkUsername) && password.equals(checkPassword) && role == 2) {
+		return 2;
+	}
+	else {
+		return 0;
+	}
+	
+	}
+	catch(IndexOutOfBoundsException e){
+		System.out.println("Password did not match the system");
+		return 0;
+	}
+	
+	
+
+};
+
+	
+
+
+
 	
 	
 	
@@ -38,9 +72,7 @@ public class AuthService {
      *     <li>Must return user object if the user logs in successfully.</li>
      * </ul>
      */
-    public boolean login(String username, String password) {
-        return true;
-    } 
+   
 
     /**
      * <ul>

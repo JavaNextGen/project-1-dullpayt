@@ -3,10 +3,11 @@ package com.revature.services;
 import java.util.List;
 
 
+
 import java.util.Optional;
 import com.revature.controllers.UserController;
 import com.revature.repositories.UserDAO;
-import com.revature.models.AbstractUser;
+
 import com.revature.models.Reimbursement;
 import com.revature.models.User;
 
@@ -27,38 +28,16 @@ import com.revature.models.User;
  */
 public class UserService {
 
-//	UserDAO uDAO = new UserDAO();
-//	
-//	
-//		//getting a user with a corresponding username. Return option if no username exists.
-//		public Optional<User> getWithUsername(String username) {
-//			return Optional.empty();
-//		}
-//
-//		public void getUserRegistration() {
-//			uDAO.getNewUsers();
-//		}
-//		
-//		
-//		public List <User> getNewUsers() {
-//			
-//			List<User> users = uDAO.getNewUsers();
-//			
-//			return users;	
-//			
-//		}
-//		
-//		
-//		
-//		
-//		
-//		
-		
-		
-		
-		
-		
-		
-		
+	UserDAO uDAO = new UserDAO();
+		public void insertUser(User newUser) {
+			
+			//take in the Employee object sent from the menu and send it to the EmployeeDAO to be inserted into the database
+			
+			//call the DAO method that inserts the new Employee
+			uDAO.insertUser(newUser);
+		}
+	
+	
+
 		
 }		

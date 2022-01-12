@@ -41,15 +41,19 @@ public class Driver {
 				config -> {
 					config.enableCorsForAllOrigins(); // allows the server to process JS requests from anywhere
 				}
-			).start(3000);
+			).start(3030);
 	
-	//app.get("/user", uc.getUserHandler);
-	//app.post("/user", uc.insertUserHandler);
+
+	app.post("/user", uc.insertUserHandler);
 	
-	//app.get("/login", ac.loginHandler);
+	app.post("/login", ac.loginHandler);
 	
+	app.get("/reimbursement/{id}", rc.getReimbursementsByAuthorHandler);
+	app.put("/reimbursement", rc.putReimbursementsHandler);	
 	app.get("/reimbursement", rc.getReimbursementsHandler);
 	app.post("/reimbursement", rc.insertReimbursementHandler);
+	
+	
 	
 	}
     	

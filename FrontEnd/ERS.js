@@ -5,7 +5,7 @@ document.getElementById("getUserButton").addEventListener("click", getEmployees)
 //login button listener goes here
 document.getElementById("loginButton").addEventListener("click", loginFunction);
 
-async function loginFunction();
+async function loginFunction()
 
 //remember, async returns a promise (which fetch requests return)
 async function getEmployees() {

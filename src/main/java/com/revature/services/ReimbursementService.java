@@ -5,6 +5,7 @@ package com.revature.services;
 import com.revature.models.Reimbursement;
 
 
+
 import com.revature.models.Status;
 import com.revature.models.User;
 
@@ -46,12 +47,28 @@ public class ReimbursementService {
 		return reimbursements;
 	}
 	
+	public List<Reimbursement> getReimbursementsByAuthor(int id){
+		List<Reimbursement> Reimbursements = rDAO.getReimbursementsByAuthor(id);
+			
+		if(Reimbursements.get(0).getReimb_author() != 0){
+			  return Reimbursements;
+			}
+			else{
+			throw new IndexOutOfBoundsException();
+			}
+		
+	}
+	
 	public void insertReimbursement(Reimbursement newReimbursement) {
 		
 		//take in the Employee object sent from the menu and send it to the EmployeeDAO to be inserted into the database
 		
 		//call the DAO method that inserts the new Employee
 		rDAO.insertReimbursement(newReimbursement);
+	}
+	
+	public void updateReimbursement(Reimbursement reimbursement) throws Exception {
+		rDAO.updateReimbursement(reimbursement);
 	}
     /**
      * <ul>
@@ -77,4 +94,6 @@ public class ReimbursementService {
     public List<Reimbursement> getReimbursementsByStatus(Status status) {
         return Collections.emptyList();
     }
+
+	
 }

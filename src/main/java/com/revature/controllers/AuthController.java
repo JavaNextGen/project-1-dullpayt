@@ -3,9 +3,10 @@ package com.revature.controllers;
 import com.google.gson.Gson;
 
 
+
 import java.util.List;
 import com.revature.services.UserService;
-import com.revature.models.ERSLoginDTO;
+import com.revature.models.User;
 import com.revature.services.AuthService;
 
 import io.javalin.http.Handler;
@@ -25,14 +26,15 @@ public class AuthController {
 		
 		Gson gson = new Gson();//create a new Gson object to make Java <-> JSON conversions
 		
-		ERSLoginDTO LDTO = gson.fromJson(body, ERSLoginDTO.class);//turn that JSON String into a LoginDTO object
+		User user = gson.fromJson(body, User.class);//turn that JSON String into a LoginDTO object
 		
 		//control flow to determine what happens i the event of successful/unsuccessful login
 		//invoke the login() method of the AuthService using the username and password from the LoginDTO
-		if(as.login(LDTO.getUsername(), LDTO.getPassword())) {
+		if(as.login(user.getErs_username(), user.getErs_password()) == 2) {
 			
 			//create a user session so that they can access the applications other functionalities
 			ctx.req.getSession();//req is a "request object", we establish sessions through it
+			
 			
 			//return a successful status code
 			ctx.status(202);//User credentials were accepted... you could use any 200 level status code
@@ -40,10 +42,24 @@ public class AuthController {
 			//send a message relaying the success
 			ctx.result("Login Success!");
 			
+		} else if (as.login(user.getErs_username(), user.getErs_password()) == 1) {
+			
+			//create a user session so that they can access the applications other functionalities
+			ctx.req.getSession();//req is a "request object", we establish sessions through it
+			
+			
+			//return a successful status code
+			ctx.status(201);//User credentials were accepted... you could use any 200 level status code
+			
+			//send a message relaying the success
+			ctx.result("Login Success!");
+			
+			
+			
 		} else {
 			
 			ctx.status(401);//unauthorized status code
-			ctx.result("Login Failed beeeeech");
+			ctx.result("Login Failed... Sorry Try Again.");
 		}
 		
 		
