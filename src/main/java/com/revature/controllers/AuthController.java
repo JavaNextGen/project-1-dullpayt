@@ -33,7 +33,7 @@ public class AuthController {
 		if(as.login(user.getErs_username(), user.getErs_password()) == 2) {
 			
 			//create a user session so that they can access the applications other functionalities
-			ctx.req.getSession();//req is a "request object", we establish sessions through it
+			ctx.req.getSession(true);//req is a "request object", we establish sessions through it
 			
 			
 			//return a successful status code
@@ -45,7 +45,7 @@ public class AuthController {
 		} else if (as.login(user.getErs_username(), user.getErs_password()) == 1) {
 			
 			//create a user session so that they can access the applications other functionalities
-			ctx.req.getSession();//req is a "request object", we establish sessions through it
+			ctx.req.getSession(true);//req is a "request object", we establish sessions through it
 			
 			
 			//return a successful status code

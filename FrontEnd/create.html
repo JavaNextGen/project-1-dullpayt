@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #main {
+            position: absolute;
+            top:20%;
+            left:25%;
+        }
+        body{
+            background-color: rgb(192, 241, 192);
+        }
+
+    </style> 
+</head>
+
+<body>
+    <div id = "main">   
+    <h3 style = "color: black;">&emsp;&emsp;&emsp;Enter New User Information</h3>    
+    
+<!-- Login Form -->
+<!--ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id-->
+   
+
+    <label>User Login:</label>
+    <br>    
+    <input type="text" id="ers_username"  name="login" placeholder ="Username">    
+    <input type="text" id="ers_password"  name="login" placeholder="Password">
+    <br>
+    <label>Please Enter Your Name!</label>
+    <br>
+    <input type="text" id="user_first_name"  name="login" placeholder="First Name">
+    <input type="text" id="user_last_name"   name="login" placeholder="Last Name">
+    <br>
+    <label>Please Give Email and What Your Role Is!</label>
+    <br>
+    <input type="text" id="user_email"  name="login" placeholder="johndoe@something.com">
+    <input type="text" id="user_role_id"  name="login" placeholder="What Is Your Role?">
+    <br>
+    <br>
+    <br>
+    <span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;</span>
+    <button id= "createbtn" value="Create User">Create New User</button>
+    
+  </div>
+
+  
+  <script src="create.js"></script>
+ </body>
+
+</html>

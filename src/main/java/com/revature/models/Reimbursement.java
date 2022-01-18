@@ -134,6 +134,23 @@ public class Reimbursement  {
         this.reimb_receipt = reimb_receipt;
         } 
     
+	public Reimbursement (int reimb_amount, String reimb_description, int reimb_author, int reimb_status_id, int reimb_type_id) {
+        super();
+       
+        this.reimb_author = reimb_author;
+        
+        this.reimb_amount = reimb_amount;
+        this.reimb_status_id = reimb_status_id;
+        this.reimb_type_id = reimb_type_id;
+        this.reimb_description = reimb_description;
+        
+        } 
+	   public Reimbursement (int reimb_id,int reimb_status_id,int reimb_resolver) {
+	        super();
+	        this.reimb_id = reimb_id;
+	        this.reimb_resolver = reimb_resolver;
+	        this.reimb_status_id = reimb_status_id;
+	        }
     /**
      * This includes the minimum parameters needed for the {@link com.revature.models.AbstractReimbursement} class.
      * If other fields are needed, please create additional constructors.

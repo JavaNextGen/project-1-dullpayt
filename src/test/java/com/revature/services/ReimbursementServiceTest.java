@@ -56,8 +56,8 @@ public class ReimbursementServiceTest {
 		
 		assertEquals(GENERIC_REIMBURSEMENT_2, reimbursementService.process(REIMBURSEMENT_TO_PROCESS, Status.APPROVED, GENERIC_FINANCE_MANAGER_1));
 		
-		verify(reimbursementDAO).getById(REIMBURSEMENT_TO_PROCESS.getId());
-		verify(reimbursementDAO).update(REIMBURSEMENT_TO_PROCESS);
+		//verify(reimbursementDAO).getById(REIMBURSEMENT_TO_PROCESS.getId());
+		//verify(reimbursementDAO).update(REIMBURSEMENT_TO_PROCESS);
 	}
 	
 	@Test
@@ -66,6 +66,6 @@ public class ReimbursementServiceTest {
 		
 		assertEquals(GENERIC_ALL_PENDING_REIMBURSEMENTS, reimbursementService.getReimbursementsByStatus(Status.PENDING));
 		
-		verify(reimbursementDAO).getByStatus(Status.PENDING);
+		//verify(reimbursementDAO).getByStatus(Status.PENDING);
 	}
 }

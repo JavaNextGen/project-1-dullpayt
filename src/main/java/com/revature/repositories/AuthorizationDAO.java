@@ -46,7 +46,7 @@ public class AuthorizationDAO {
 			
 			//create an empty ArrayList to be filled with the data from the database
 			
-				rs.next();
+				while(rs.next()){
 				
 				//Use the all args constructor to create a new Employee object from each returned row from the DB
 				User u = new User(
@@ -59,6 +59,7 @@ public class AuthorizationDAO {
 						rs.getString("user_email"),
 						rs.getInt("user_role_id")
 						);
+				
 //				ers_users_id serial PRIMARY KEY,
 //				ers_username varchar(50) UNIQUE,
 //				ers_password varchar(50),
@@ -80,7 +81,7 @@ public class AuthorizationDAO {
 			//then, return the populated ArrayList of Employees
 			return u;
 	
-	
+		}	
 		}	
 	
 		catch (SQLException e) {
